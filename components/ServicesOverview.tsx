@@ -41,7 +41,7 @@ export default function ServicesOverview() {
   const exitRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const panels = gsap.utils.toArray(".panel");
+    const panels = gsap.utils.toArray<HTMLElement>(".panel");
 
     // Pin entire section
     gsap.to(panels, {
@@ -68,7 +68,7 @@ export default function ServicesOverview() {
       },
     });
 
-    panels.forEach((panel: any) => {
+    panels.forEach((panel) => {
       gsap.fromTo(
         panel,
         { opacity: 0, scale: 0.95 },

@@ -385,7 +385,9 @@ const ProjectsShowcase = () => {
           <div
             key={project.id}
             className={styles.projectCard}
-            ref={(el) => (projectsRef.current[index] = el)}
+            ref={(el) => {
+              projectsRef.current[index] = el;
+            }}
             onClick={() => openProject(project)}
           >
             <div className={styles.imageWrapper}>
@@ -434,11 +436,11 @@ const ProjectsShowcase = () => {
             Turn Your Vision Into an Experience That Lasts
           </h2>
           <p className={styles.ctaText}>
-            You have a story worth sharing — we help you tell it in a way that's
-            impossible to ignore.
+            You have a story worth sharing — we help you tell it in a way
+            that&apos;s impossible to ignore.
           </p>
           <Link href="/contact-us" className={styles.ctaButton}>
-            Let's Talk <FiArrowRight />
+            Let&apos;s Talk <FiArrowRight />
           </Link>
         </div>
       </div>

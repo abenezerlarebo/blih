@@ -1,10 +1,5 @@
-import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import ClientLayout from "@/components/ClientLayout";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 // export const metadata = {
 //   title: "Blih Technologies | Code. Design. Impact.",

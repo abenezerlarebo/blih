@@ -2,10 +2,10 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
-import { FiMenu, FiX } from "react-icons/fi";
 import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa";
 import styles from "../styles/components/headerMenu.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 function HamburgerIcon({ open, color }: { open: boolean; color: string }) {
   return (
@@ -24,7 +24,7 @@ export default function HeaderMenu() {
   const socialsRef = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [iconColor, setIconColor] = useState("#fff");
+  const iconColor = "#fff";
 
   useEffect(() => {
     if (menuOpen) {
@@ -141,14 +141,6 @@ export default function HeaderMenu() {
     }
   }, [menuOpen]);
 
-  function isLightColor(rgb: string) {
-    const match = rgb.match(/\d+/g);
-    if (!match) return false;
-    const [r, g, b] = match.map(Number);
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness > 170; // tweakable threshold
-  }
-
   return (
     <>
       <button
@@ -184,29 +176,29 @@ export default function HeaderMenu() {
 
           <ul className={styles.menuList} ref={menuItemsRef}>
             <li>
-              <a href="/" onClick={() => setMenuOpen(false)}>
+              <Link href="/" onClick={() => setMenuOpen(false)}>
                 HOME
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="services" onClick={() => setMenuOpen(false)}>
+              <Link href="services" onClick={() => setMenuOpen(false)}>
                 SERVICES
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="projects" onClick={() => setMenuOpen(false)}>
+              <Link href="projects" onClick={() => setMenuOpen(false)}>
                 PROJECTS
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="about" onClick={() => setMenuOpen(false)}>
+              <Link href="about" onClick={() => setMenuOpen(false)}>
                 ABOUT
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="contact" onClick={() => setMenuOpen(false)}>
+              <Link href="contact" onClick={() => setMenuOpen(false)}>
                 CONTACT
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -215,38 +207,38 @@ export default function HeaderMenu() {
             ref={socialsRef}
             aria-label="Social Media Links"
           >
-            <a
+            <Link
               href="https://twitter.com/blihtech"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
             >
               <FaTwitter />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://linkedin.com/company/blihtech"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               <FaLinkedinIn />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://github.com/blihtech"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
             >
               <FaGithub />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://instagram.com/blihtech"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
             >
               <FaInstagram />
-            </a>
+            </Link>
           </div>
         </div>
       </nav>

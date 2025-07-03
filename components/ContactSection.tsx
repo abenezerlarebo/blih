@@ -151,7 +151,7 @@ const ContactSection = () => {
 
         <div className={`${styles.rightColumn} ${styles.animateOnScroll}`}>
           <form onSubmit={handleSubmit} className={styles.contactForm}>
-            <h3 className={styles.formTitle}>Let's talk</h3>
+            <h3 className={styles.formTitle}>Let&apos;s talk</h3>
 
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
@@ -224,7 +224,9 @@ const ContactSection = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.selectLabel}>I'm interested in</label>
+              <label className={styles.selectLabel}>
+                I&apos;m interested in
+              </label>
               <div className={styles.interestGrid}>
                 {["Development", "UI/UX", "Branding", "Animation"].map(
                   (item) => (

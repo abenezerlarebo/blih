@@ -50,34 +50,39 @@ function AboutSection() {
       });
 
       // Stagger text with more dramatic effect
-      gsap.from(headlineRef.current?.querySelectorAll("span"), {
-        yPercent: 120,
-        opacity: 0,
-        rotateX: 45,
-        ease: "back.out(2)",
-        duration: 1,
-        stagger: { amount: 0.5, from: "random" },
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
+      const headlineSpans = headlineRef.current?.querySelectorAll("span");
+      if (headlineSpans && headlineSpans.length > 0) {
+        gsap.from(headlineSpans, {
+          yPercent: 120,
+          opacity: 0,
+          rotateX: 45,
+          ease: "back.out(2)",
+          duration: 1,
+          stagger: { amount: 0.5, from: "random" },
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        });
+      }
 
       // Enhanced text content animation
-      gsap.from(textRef.current?.children, {
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power4.out",
-        stagger: {
-          amount: 0.8,
-          from: "start",
-        },
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 85%",
-        },
-      });
+      if (textRef.current && textRef.current.children.length > 0) {
+        gsap.from(Array.from(textRef.current.children), {
+          y: 60,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power4.out",
+          stagger: {
+            amount: 0.8,
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 85%",
+          },
+        });
+      }
 
       // Image stack scroll animation with parallax
       ScrollTrigger.create({
@@ -138,19 +143,25 @@ function AboutSection() {
     <section ref={sectionRef} className={styles.aboutSection}>
       {/* Background text elements */}
       <div
-        ref={(el) => (bgTextRefs.current[0] = el)}
+        ref={(el) => {
+          bgTextRefs.current[0] = el;
+        }}
         className={`${styles.backgroundText} ${styles.line1}`}
       >
         BLIH BLIH BLIH BLIH BLIH
       </div>
       <div
-        ref={(el) => (bgTextRefs.current[1] = el)}
+        ref={(el) => {
+          bgTextRefs.current[1] = el;
+        }}
         className={`${styles.backgroundText} ${styles.line2}`}
       >
         BLIH BLIH BLIH BLIH BLIH
       </div>
       <div
-        ref={(el) => (bgTextRefs.current[2] = el)}
+        ref={(el) => {
+          bgTextRefs.current[2] = el;
+        }}
         className={`${styles.backgroundText} ${styles.line3}`}
       >
         BLIH BLIH BLIH BLIH BLIH
@@ -169,13 +180,13 @@ function AboutSection() {
 
           <div className={styles.textContent} ref={textRef}>
             <p className={styles.subtext}>
-              We're a passionate web agency focused on delivering cutting-edge
-              digital solutions and unforgettable experiences to clients
-              worldwide.
+              We&apos;re a passionate web agency focused on delivering
+              cutting-edge digital solutions and unforgettable experiences to
+              clients worldwide.
             </p>
             <p>
               Our mission is to transform bold ideas into impactful digital
-              products. Whether you're a startup or enterprise, we tailor
+              products. Whether you&apos;re a startup or enterprise, we tailor
               strategies that scale and impress.
             </p>
 
@@ -294,14 +305,14 @@ function AboutSection() {
 
         <div className={styles.imageContainer}>
           <div ref={imageRef} className={styles.imageStack}>
-            <img
+            <Image
               src={aboutImage}
               alt="Team collaboration"
               className={`${styles.stackImage} ${styles.leftImage} ${
                 isHovering ? styles.imageHover : ""
               }`}
             />
-            <img
+            <Image
               src={hoverImageSrc}
               alt="Creative workspace"
               className={`${styles.stackImage} ${styles.rightImage} ${

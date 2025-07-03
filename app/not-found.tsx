@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { FiAlertTriangle } from "react-icons/fi";
 import gsap from "gsap";
 import styles from "../styles/components/NotFound.module.css";
+import Link from "next/link";
 
 export default function NotFound() {
   const iconRef = useRef<HTMLDivElement>(null);
@@ -49,9 +50,9 @@ export default function NotFound() {
       <p className={styles.description} ref={descRef}>
         Sorry, we couldn’t find the page you’re looking for.
       </p>
-      <a href="/" className={styles.homeButton} ref={btnRef}>
+      <Link href="/" className={styles.homeButton} ref={btnRef}>
         Go Back Home
-      </a>
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import styles from "../styles/components/privacy.module.css";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -133,7 +133,7 @@ const PrivacyPolicy = () => {
           <p>
             We may update our Privacy Policy from time to time. We will notify
             you of any changes by posting the new Privacy Policy on this page
-            and updating the "Last Updated" date.
+            and updating the &quot;Last Updated&quot; date.
           </p>
           <p>
             You are advised to review this Privacy Policy periodically for any

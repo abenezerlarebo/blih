@@ -162,19 +162,22 @@ export default function TestimonialsSection() {
       }
 
       // Subheading animation
-      gsap.from(headingRef.current?.querySelector("p"), {
-        y: 30,
-        opacity: 0,
-        filter: "blur(5px)",
-        duration: 1,
-        delay: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
+      const subheading = headingRef.current?.querySelector("p");
+      if (subheading) {
+        gsap.from(subheading, {
+          y: 30,
+          opacity: 0,
+          filter: "blur(5px)",
+          duration: 1,
+          delay: 0.3,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
 
       // Card animations on enter
       gsap.from(cardsRef.current, {
@@ -228,7 +231,7 @@ export default function TestimonialsSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [activeIndex]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -265,7 +268,9 @@ export default function TestimonialsSection() {
               className={`${styles.card} ${
                 index === activeIndex ? styles.active : ""
               }`}
-              ref={(el) => (cardsRef.current[index] = el)}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
               onClick={() => goToIndex(index)}
             >
               <div className={styles.cardGlow}></div>

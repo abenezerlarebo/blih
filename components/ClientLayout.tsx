@@ -5,6 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import "@/styles/globals.css";
 import { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
+import Head from "next/head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,9 +20,9 @@ export default function ClientLayout({
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
+      </Head>
       <body className={inter.className}>
         {!loadingComplete ? (
           <LoadingScreen onFinish={() => setLoadingComplete(true)} />

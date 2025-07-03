@@ -166,7 +166,9 @@ const CareersSection = () => {
               <div
                 key={index}
                 className={styles.featureCard}
-                ref={(el) => (featuresRef.current[index] = el)}
+                ref={(el) => {
+                  featuresRef.current[index] = el;
+                }}
               >
                 <div className={styles.featureIcon}>{feature.icon}</div>
                 <h4 className={styles.featureTitle}>{feature.title}</h4>
@@ -224,7 +226,9 @@ const CareersSection = () => {
                     ? styles.selectedPosition
                     : ""
                 }`}
-                ref={(el) => (positionsRef.current[index] = el)}
+                ref={(el) => {
+                  positionsRef.current[index] = el;
+                }}
                 onClick={() =>
                   setSelectedPosition(
                     selectedPosition === position.id ? null : position.id
@@ -293,8 +297,8 @@ const CareersSection = () => {
                         subject line:
                         <br />
                         <strong>
-                          "Application for {position.title} Position - [Your
-                          Name]"
+                          &quot;Application for {position.title} Position -
+                          [Your Name]&quot;
                         </strong>
                       </p>
                       <a
@@ -314,10 +318,12 @@ const CareersSection = () => {
 
         {/* General Application CTA */}
         <div className={styles.generalApplication}>
-          <h3 className={styles.generalTitle}>Don't See Your Perfect Role?</h3>
+          <h3 className={styles.generalTitle}>
+            Don&apos;t See Your Perfect Role?
+          </h3>
           <p className={styles.generalText}>
-            We're always looking for talented individuals. Send us your resume
-            and we'll contact you when a matching position opens up.
+            We&apos;re always looking for talented individuals. Send us your
+            resume and we&apos;ll contact you when a matching position opens up.
           </p>
           <a
             href="mailto:careers@marcelodesignx.com?subject=General Application"

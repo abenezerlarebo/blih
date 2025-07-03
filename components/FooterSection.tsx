@@ -4,14 +4,8 @@ import React, { useRef, useEffect } from "react";
 import styles from "../styles/components/footer.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
-import { TbHexagonLetterB } from "react-icons/tb"; // Example logo
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);

@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
-  const introRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -98,7 +97,9 @@ export default function ServicesSection() {
               <div
                 key={idx}
                 className={styles.card}
-                ref={(el) => el && (cardsRef.current[idx] = el)}
+                ref={(el) => {
+                  if (el) cardsRef.current[idx] = el;
+                }}
               >
                 <div className={styles.innerCard}>
                   <div

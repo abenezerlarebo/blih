@@ -43,7 +43,7 @@ export default function HeroSection() {
     );
 
     // Animate each headline slide with visibility control
-    slides.forEach((slide, index) => {
+    slides.forEach((slide) => {
       const chars = slide.querySelectorAll("span");
 
       gsap.set(slide, {

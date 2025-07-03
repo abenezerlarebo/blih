@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styles from "../styles/components/home.module.css";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
