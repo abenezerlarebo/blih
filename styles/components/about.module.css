@@ -1,0 +1,423 @@
+.aboutSection {
+  position: relative;
+  padding: 15vw 5vw;
+  background-color: #f8f8f8;
+  color: #333;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.backgroundText {
+  position: absolute;
+  font-size: 30vw;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.05); /* Increased opacity slightly */
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  width: 400%;
+  line-height: 0.7;
+  opacity: 1; /* Explicitly set to visible */
+  will-change: transform; /* For better performance */
+}
+.line1 {
+  top: 10%;
+  left: 0;
+  transform: rotate(-5deg);
+}
+
+.line2 {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(2deg);
+}
+
+.line3 {
+  bottom: 10%;
+  left: 0;
+  transform: rotate(-3deg);
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.textBlock {
+  position: relative;
+}
+
+.headlineWrapper {
+  position: relative;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.headline {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 2rem;
+  color: #111;
+  position: relative;
+}
+
+.headlineClone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #111;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+.headline span,
+.headlineClone span {
+  display: inline-block;
+}
+
+.subtext {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.textContent {
+  position: relative;
+  z-index: 2;
+}
+
+.textContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 90%;
+  color: #444;
+}
+
+.clientSection {
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+.clientTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #111;
+  position: relative;
+  display: inline-block;
+}
+
+.clientTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #0066ff, #00ccff);
+}
+
+.clientGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.clientCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clientCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.clientFlag {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 1rem;
+}
+
+.clientCard h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.clientCard p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.valuesList {
+  list-style: none;
+  padding: 0;
+  margin: 4rem 0;
+}
+
+.valuesList li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.valuesList li:hover {
+  transform: translateX(10px);
+}
+
+.bullet {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bulletIcon {
+  font-size: 1.5rem;
+  color: red;
+  transition: all 0.3s ease;
+}
+
+.valuesList li:hover .bullet {
+  transform: scale(1.1);
+  background: red;
+}
+
+.valuesList li:hover .bulletIcon {
+  color: white;
+  transform: scale(1.2);
+}
+
+.valueContent h4 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.valueContent p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.imageButton {
+  background: linear-gradient(90deg, #0066ff, #00ccff);
+  color: white;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+}
+
+.imageButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+}
+
+.buttonText {
+  position: relative;
+  z-index: 2;
+}
+
+.buttonArrow {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.imageButton:hover .buttonArrow {
+  transform: translateX(5px);
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageStack {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.stackImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  will-change: transform;
+  transition: box-shadow 0.3s ease;
+}
+
+.leftImage {
+  transform: rotate(-8deg) translateX(-40px);
+  z-index: 1;
+}
+
+.rightImage {
+  transform: rotate(8deg) translateX(40px);
+  z-index: 2;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.imageWrapperStack {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.staticImageSmall {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+
+.rotateLeft {
+  transform: rotate(-8deg);
+}
+
+.rotateRight {
+  transform: rotate(8deg);
+  z-index: 1;
+}
+
+.staticImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 102, 255, 0.1), transparent);
+}
+
+.hoverImageWrapper {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.hoverImage {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(1.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hoverImageWrapper:hover .hoverImage {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 1024px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .imageContainer {
+    min-height: 400px;
+    margin-top: 3rem;
+  }
+
+  .textContent p {
+    max-width: 100%;
+  }
+
+  .backgroundText {
+    font-size: 40vw;
+  }
+
+  .line1 {
+    top: 5%;
+  }
+
+  .line2 {
+    top: 50%;
+  }
+
+  .line3 {
+    bottom: 5%;
+  }
+
+  .backgroundText {
+    font-size: 40vw;
+    color: rgba(0, 0, 0, 0.03); /* Slightly lighter on mobile */
+  }
+}

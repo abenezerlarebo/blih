@@ -1,0 +1,176 @@
+/* Logo fixed top-left */
+.logo {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 200px; /* Set width for your logo image */
+  height: auto; /* Set height */
+  user-select: none;
+  cursor: pointer; /* Usually logos link back to home */
+  z-index: 3600;
+  /* Optional: add smooth scaling on hover */
+  transition: transform 0.3s ease;
+}
+/* To ensure the img fits inside */
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* or cover depending on your logo */
+  display: block;
+}
+
+/* Menu button fixed top-right */
+.menuButton {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.menuButton:hover {
+  transform: scale(1.1);
+}
+
+/* Container for menu content */
+.menuContent {
+  text-align: center;
+  max-width: 480px;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  flex-grow: 1;
+}
+
+/* Menu navigation list */
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.menuList li a {
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ff4b2b;
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menuList li a:hover,
+.menuList li a:focus {
+  color: #fff;
+  transform: scale(1.1);
+  outline: none;
+}
+.menuOverlay {
+  /* keep existing styles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(26, 10, 10, 0.97);
+  backdrop-filter: blur(14px);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3500;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 80px; /* <-- Add bottom padding to avoid cutoff */
+  box-sizing: border-box; /* <-- Important for padding */
+  overflow: visible !important; /* <-- Allow overflow so socials can show */
+}
+
+.socials {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2.4rem;
+  font-size: 2rem;
+  color: #ff4b2b;
+  user-select: none;
+  z-index: 4000; /* <-- Raise z-index above menuOverlay */
+}
+
+.socials a {
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials a:hover,
+.socials a:focus {
+  color: #fff;
+  transform: scale(1.25);
+  outline: none;
+}
+
+.menuButton {
+  background: transparent;
+  border: none;
+  z-index: 1000;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+}
+
+/* Hamburger lines */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 25px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.hamburger span {
+  height: 3px;
+  border-radius: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Transform to X when open */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}

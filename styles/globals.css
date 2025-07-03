@@ -1,0 +1,69 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button,
+div {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Hide scrollbar for all browsers */
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important; /* Optional: just to make sure it's invisible */
+  border: none !important; /* Optional: remove any border */
+  box-shadow: none !important; /* Optional: remove any shadow */
+  opacity: 0 !important; /* Optional: make it fully transparent */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: transparent !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+@supports not (backdrop-filter: blur(20px)) {
+  .modalOverlay {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  .modalContainer {
+    background: rgba(25, 25, 35, 0.98);
+  }
+}

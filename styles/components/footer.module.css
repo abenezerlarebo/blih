@@ -1,0 +1,169 @@
+.footer {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 6rem 5vw 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 1400px;
+  width: 100%;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+  color: #fff;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.logoIcon {
+  width: 80px;
+  height: auto;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeInUp 1s 0.3s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.columns h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.columns ul {
+  list-style: none;
+  padding: 0;
+}
+
+.columns ul li {
+  margin-bottom: 0.6rem;
+}
+
+.columns ul li a {
+  color: #888;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.columns ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: red;
+  transition: width 0.3s ease;
+}
+
+.columns ul li a:hover {
+  color: red;
+}
+
+.columns ul li a:hover::after {
+  width: 100%;
+}
+
+.social .icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social .icons a {
+  color: #888;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social .icons a:hover {
+  color: red;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Marquee */
+.marqueeWrapper {
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  margin: 4rem 0 2rem;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.marqueeWrapper::before,
+.marqueeWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.marqueeWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+}
+
+.marqueeWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+}
+
+.marqueeTrack {
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+  color: red;
+}
+
+.bottomNote {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logoArea {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,36 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e71921;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease-out, background 0.3s ease;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor::after {
+  content: "";
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background-color: white;
+  transition: background-color 0.2s ease;
+}
+
+.cursor.hover-red::after {
+  background-color: #111;
+}
+
+.cursor.active {
+  transform: translate(-50%, -50%) scale(2);
+  background-color: #e71921;
+}

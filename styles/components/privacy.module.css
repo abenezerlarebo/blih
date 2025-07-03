@@ -1,0 +1,133 @@
+.privacyPolicy {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #333;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #d32f2f; /* Red theme */
+}
+
+.header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.accordionHeader:hover {
+  color: #d32f2f;
+}
+
+.accordionHeader h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: inherit;
+}
+
+.accordionIcon {
+  transition: transform 0.3s ease;
+  color: #d32f2f;
+  min-width: 24px;
+}
+
+.accordionItem.active .accordionIcon {
+  transform: rotate(180deg);
+}
+
+.accordionContent {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.accordionBody {
+  padding: 0 0 20px 0;
+  color: #444;
+}
+
+.accordionBody p {
+  margin-bottom: 15px;
+}
+
+.accordionBody ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.accordionBody li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.accordionBody li:before {
+  content: "•";
+  color: #d32f2f;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.accordionBody strong {
+  color: #222;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .privacyPolicy {
+    padding: 30px 15px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .accordionHeader h2 {
+    font-size: 1.1rem;
+  }
+
+  .accordionHeader {
+    padding: 15px 0;
+  }
+}
