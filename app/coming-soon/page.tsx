@@ -1,20 +1,28 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { FiAlertTriangle, FiArrowRight } from "react-icons/fi";
+import {
+  FiMail,
+  FiArrowRight,
+  FiTwitter,
+  FiLinkedin,
+  FiInstagram,
+} from "react-icons/fi";
+import { IoRocketOutline } from "react-icons/io5";
 import gsap from "gsap";
 import Link from "next/link";
+import { AiFillDiscord } from "react-icons/ai";
 
-export default function NotFound() {
+export default function ComingSoon() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const iconRef = useRef<HTMLDivElement>(null);
+  const rocketRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
-  const btnRef = useRef<HTMLAnchorElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const particleCount = 20;
+    const particleCount = 16;
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
       particle.className = "absolute rounded-full";
@@ -31,35 +39,43 @@ export default function NotFound() {
       particlesRef.current?.appendChild(particle);
     }
 
+    gsap.to(rocketRef.current, {
+      y: -10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     tl.fromTo(
       containerRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.5 }
+      { opacity: 1, duration: 0.6 }
     )
       .fromTo(
-        iconRef.current,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.7)" }
+        rocketRef.current,
+        { scale: 0.5, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.7)" }
       )
       .fromTo(
         titleRef.current,
         { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.4"
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.6"
       )
       .fromTo(
         descRef.current,
         { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.3"
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.7"
       )
       .fromTo(
-        btnRef.current,
+        formRef.current,
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.5)" },
-        "-=0.3"
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.5"
       );
   }, []);
 
@@ -81,35 +97,86 @@ export default function NotFound() {
         className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center"
       >
         <div
-          ref={iconRef}
+          ref={rocketRef}
           className="mb-8 p-6 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 backdrop-blur-lg"
         >
-          <FiAlertTriangle className="text-blue-400" size={80} />
+          <IoRocketOutline className="text-blue-400" size={80} />
         </div>
 
         <h1
           ref={titleRef}
-          className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-purple-300 mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-purple-300 mb-6"
         >
-          404 - Quantum Disruption
+          Launching Soon
         </h1>
 
         <p
           ref={descRef}
           className="text-lg md:text-xl text-gray-400 mb-8 max-w-md"
         >
-          The digital dimension you&apos;re seeking has collapsed into a quantum
-          state. Let&apos;s navigate back to stable reality.
+          We&apos;re building something extraordinary. Stay tuned for our grand
+          reveal!
         </p>
 
-        <Link
-          href="/"
-          ref={btnRef}
-          className="group inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]"
+        {/* Countdown Timer */}
+        <div className="flex gap-4 mb-10">
+          <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 min-w-[80px]">
+            <div className="text-3xl font-bold text-blue-400">14</div>
+            <div className="text-xs text-gray-400">DAYS</div>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 min-w-[80px]">
+            <div className="text-3xl font-bold text-purple-400">23</div>
+            <div className="text-xs text-gray-400">HOURS</div>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 min-w-[80px]">
+            <div className="text-3xl font-bold text-blue-400">45</div>
+            <div className="text-xs text-gray-400">MINUTES</div>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 min-w-[80px]">
+            <div className="text-3xl font-bold text-purple-400">12</div>
+            <div className="text-xs text-gray-400">SECONDS</div>
+          </div>
+        </div>
+
+        <form
+          ref={formRef}
+          className="w-full max-w-md bg-gray-800/50 border border-gray-700 rounded-xl p-1 backdrop-blur-lg mb-8"
         >
-          <span className="mr-3">Return to Homebase</span>
-          <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
-        </Link>
+          <div className="flex">
+            <div className="flex-1 flex items-center pl-4">
+              <FiMail className="text-gray-500 mr-2" />
+              <input
+                type="email"
+                placeholder="Enter your email for updates"
+                className="bg-transparent border-none outline-none text-white placeholder-gray-500 w-full py-3"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-6 py-3 rounded-lg transition-all duration-300 flex items-center"
+            >
+              <span className="mr-2">Notify Me</span>
+              <FiArrowRight />
+            </button>
+          </div>
+        </form>
+
+        <div className="flex gap-4">
+          {["Twitter", "LinkedIn", "Instagram", "Discord"].map((social) => (
+            <Link
+              key={social}
+              href="#"
+              className="p-3 rounded-full bg-gray-800/50 border border-gray-700 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+              aria-label={social}
+            >
+              {social === "Twitter" && <FiTwitter />}
+              {social === "LinkedIn" && <FiLinkedin />}
+              {social === "Instagram" && <FiInstagram />}
+              {social === "Discord" && <AiFillDiscord />}
+            </Link>
+          ))}
+        </div>
       </div>
 
       <style jsx global>{`

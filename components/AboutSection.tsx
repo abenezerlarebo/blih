@@ -27,11 +27,11 @@ function AboutSection() {
   const [activeTab, setActiveTab] = useState("mission");
 
   const aboutImage =
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80";
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80";
   const teamImage =
     "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80";
   const techImage =
-    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80";
+    "https://images.unsplash.com/photo-1687603921109-46401b201195?auto=format&fit=crop&w=1200&q=80";
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,6 +75,7 @@ function AboutSection() {
 
   return (
     <section
+      id="about"
       ref={sectionRef}
       className="relative bg-[linear-gradient(135deg,#0a0a0a_0%,#111_50%,#0a0a0a_100%)] text-white py-20 md:py-32 px-4 sm:px-6 overflow-hidden"
     >
@@ -291,7 +292,6 @@ function AboutSection() {
             </div>
           </div>
 
-          {/* Right column - Image display */}
           <div className="content-block relative h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px]">
             <div className="absolute inset-0 rounded-xl md:rounded-2xl overflow-hidden border border-gray-800/50 shadow-xl md:shadow-2xl group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-teal-900/20 z-10"></div>
@@ -307,12 +307,11 @@ function AboutSection() {
                 }
                 alt="About BLIH"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-102 transition-transform duration-700 w-full"
                 priority
               />
             </div>
 
-            {/* Floating tech badges */}
             <div className="absolute -bottom-4 md:-bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 md:gap-4 flex-wrap justify-center">
               {[
                 {
@@ -358,7 +357,7 @@ function AboutSection() {
               {
                 city: "San Francisco",
                 country: "USA",
-                services: "Web & Mobile Development",
+                services: "Cloud Infrastructure",
                 color: "border-blue-400",
                 icon: <FaCode className="text-blue-400" />,
               },
@@ -370,9 +369,9 @@ function AboutSection() {
                 icon: <FaServer className="text-teal-400" />,
               },
               {
-                city: "Bangalore",
-                country: "India",
-                services: "Cloud Infrastructure",
+                city: "Addis Ababa",
+                country: "Ethiopia",
+                services: "Web & Mobile Development",
                 color: "border-purple-400",
                 icon: <MdCloud className="text-purple-400" />,
               },

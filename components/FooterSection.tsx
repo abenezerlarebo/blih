@@ -105,28 +105,31 @@ export default function FooterSection() {
               {
                 title: "Company",
                 links: [
-                  { href: "/about", label: "About Us" },
-                  { href: "/careers", label: "Careers" },
-                  { href: "/team", label: "Our Team" },
-                  { href: "/blog", label: "Insights" },
+                  { href: "#home", label: "Home" },
+                  { href: "#about", label: "About" },
+                  { href: "#services", label: "Services" },
+                  { href: "#testimonials", label: "Testimonials" },
                 ],
               },
               {
                 title: "Services",
                 links: [
-                  { href: "/services/web", label: "Web Development" },
-                  { href: "/services/mobile", label: "Mobile Apps" },
-                  { href: "/services/uiux", label: "UI/UX Design" },
-                  { href: "/services/ecommerce", label: "E-commerce" },
+                  { href: "/coming-soon", label: "Web Development" },
+                  { href: "/coming-soon", label: "Mobile Apps" },
+                  { href: "/coming-soon", label: "UI/UX Design" },
+                  { href: "/coming-soon", label: "E-commerce" },
                 ],
               },
               {
                 title: "Connect",
                 links: [
-                  { href: "/contact", label: "Contact Us" },
-                  { href: "/support", label: "Support" },
-                  { href: "/privacy", label: "Privacy Policy" },
-                  { href: "/portfolio", label: "Our Work" },
+                  {
+                    href: "https://forms.gle/GcQ6v1j6urY79F2D8",
+                    label: "Contact Us",
+                  },
+                  { href: "/coming-soon", label: "Support" },
+                  { href: "/soming-soon", label: "Privacy Policy" },
+                  { href: "/coming-soon", label: "Our Work" },
                 ],
               },
             ].map((section, index) => (
@@ -136,7 +139,7 @@ export default function FooterSection() {
                 </h4>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.label}>
                       <a
                         href={link.href}
                         className="text-gray-400 hover:text-blue-400 transition duration-300 group"
@@ -154,7 +157,6 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Social + Contact */}
         <div
           ref={socialsRef}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 border-t border-gray-800/50"
@@ -188,15 +190,15 @@ export default function FooterSection() {
             </h4>
             <div className="space-y-4">
               <a
-                href="mailto:hello@digitalagency.com"
+                href="mailto:blihtechnologies@gmail.com"
                 className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <RiMailLine className="text-xl" />
-                <span>hello@digitalagency.com</span>
+                <span>blihtechnologies@gmail.com</span>
               </a>
               <div className="flex items-center gap-3 text-gray-400">
                 <RiMapPinLine className="text-xl" />
-                <span>123 Tech Street, San Francisco, CA</span>
+                <span>ICT Park, Addis Ababa, ET</span>
               </div>
             </div>
           </div>
@@ -213,11 +215,11 @@ export default function FooterSection() {
               .map((_, i) => (
                 <React.Fragment key={i}>
                   <span className="text-blue-400">WEB_DEVELOPMENT</span>
-                  <span className="mx-8 text-gray-500">///</span>
+                  <span className="mx-8 text-gray-500">{"///"}</span>
                   <span className="text-purple-400">MOBILE_APPS</span>
-                  <span className="mx-8 text-gray-500">///</span>
+                  <span className="mx-8 text-gray-500">{"///"}</span>
                   <span className="text-blue-400">UI_UX_DESIGN</span>
-                  <span className="mx-8 text-gray-500">///</span>
+                  <span className="mx-8 text-gray-500">{"///"}</span>
                 </React.Fragment>
               ))}
           </div>

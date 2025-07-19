@@ -26,7 +26,7 @@ const services = [
     title: "Mobile App Development",
     desc: "Native and cross-platform mobile applications for iOS and Android that deliver seamless user experiences.",
     icon: FaMobileAlt,
-    image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6",
+    image: "https://images.unsplash.com/photo-1609921141835-710b7fa6e438",
     features: [
       "React Native development",
       "Flutter applications",
@@ -38,7 +38,7 @@ const services = [
     title: "Backend & API Services",
     desc: "Robust server-side solutions with scalable architecture and secure data management.",
     icon: FaServer,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+    image: "https://images.unsplash.com/photo-1594915440248-1e419eba6611",
     features: [
       "Node.js & Python backends",
       "GraphQL & REST APIs",
@@ -69,52 +69,68 @@ export default function ServicesSection() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
-      gsap.from(titleRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
+      // Animate title with clip reveal
+      gsap.fromTo(
+        titleRef.current,
+        {
+          y: 60,
+          opacity: 0,
+          clipPath: "inset(0% 0% 100% 0%)",
         },
-      });
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
 
-      // Subtitle animation
+      // Subtitle float-up animation
       gsap.from(subtitleRef.current, {
-        y: 30,
+        y: 40,
         opacity: 0,
+        skewY: 4,
         duration: 1,
-        delay: 0.2,
         ease: "power3.out",
+        delay: 0.1,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
         },
       });
 
-      // Particle animation
-      particleRefs.current.forEach((particle, i) => {
+      // Floating particle animations
+      particleRefs.current.forEach((particle) => {
         if (!particle) return;
+
+        const floatDistance = 20 + Math.random() * 30;
+        const floatDuration = 3 + Math.random() * 4;
+
         gsap.to(particle, {
-          x: `${(Math.random() - 0.5) * 100}px`,
-          y: `${(Math.random() - 0.5) * 100}px`,
-          duration: 5 + Math.random() * 10,
-          repeat: -1,
-          yoyo: true,
+          x: `+=${(Math.random() - 0.5) * 40}`,
+          y: `+=${(Math.random() - 0.5) * floatDistance}`,
+          duration: floatDuration,
           ease: "sine.inOut",
-          delay: i * 0.5,
+          yoyo: true,
+          repeat: -1,
+          delay: Math.random(),
         });
       });
 
       const cards = cardsRef.current;
+
       cards.forEach((card, i) => {
         gsap.set(card, {
           y: 0,
-          opacity: i === 0 ? 1 : 0.3,
+          opacity: i === 0 ? 1 : 0,
           scale: i === 0 ? 1 : 0.9,
           zIndex: cards.length - i,
+          filter: i > 1 ? "blur(3px)" : "none",
         });
       });
 
@@ -128,7 +144,6 @@ export default function ServicesSection() {
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
-        defaults: { ease: "power3.inOut" },
       });
 
       cards.forEach((card, i) => {
@@ -138,30 +153,32 @@ export default function ServicesSection() {
         tl.to(
           card,
           {
-            scale: 0.94,
+            scale: 0.92,
             opacity: 0,
-            y: 50,
+            y: 60,
+            filter: "blur(6px)",
             duration: 1,
           },
-          ">"
+          ">+=0.1"
         );
 
         tl.to(
           next,
           {
-            y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1,
+            y: 0,
+            filter: "none",
+            duration: 1.2,
           },
           "<"
         );
 
         tl.fromTo(
-          card.querySelectorAll(".service-feature"),
-          { x: 30, opacity: 0 },
-          { x: 0, opacity: 1, stagger: 0.1, duration: 0.5 },
-          "-=0.5"
+          next.querySelectorAll(".service-feature"),
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.1, duration: 0.6 },
+          "-=0.6"
         );
       });
     }, sectionRef);
@@ -171,6 +188,7 @@ export default function ServicesSection() {
 
   return (
     <section
+      id="services"
       ref={sectionRef}
       className="relative bg-stone-950 text-white min-h-screen overflow-hidden py-20 px-6 md:px-16 flex items-center justify-center"
     >
@@ -218,7 +236,7 @@ export default function ServicesSection() {
                 ref={(el) => {
                   if (el) cardsRef.current[idx] = el;
                 }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
+                className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl mx-auto p-6 md:p-8 bg-gradient-to-br from-gray-900/70 to-gray-800/40 rounded-2xl md:rounded-3xl shadow-xl border border-gray-800/50 backdrop-blur-lg hover:shadow-[0_0_40px_rgba(59,130,246,0.2)] transition-all duration-500">
                   <div className="order-2 lg:order-1">

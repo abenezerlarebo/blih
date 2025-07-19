@@ -8,9 +8,11 @@ import {
   FaGithub,
   FaInstagram,
   FaDiscord,
+  FaYoutube,
 } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { RiMenu4Fill } from "react-icons/ri";
+import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -129,11 +131,10 @@ export default function HeaderMenu() {
 
   return (
     <>
-      {/* Menu Button */}
       <button
         aria-label={menuOpen ? "Close menu" : "Open menu"}
         onClick={() => setMenuOpen((prev) => !prev)}
-        className="z-50 fixed top-6 right-6 p-3 rounded-full bg-gradient-to-br from-cyan-500/10 to-purple-500/10 backdrop-blur-lg border border-gray-700 hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,200,255,0.3)]"
+        className="z-51 fixed top-6 right-6 p-3 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
       >
         {menuOpen ? (
           <IoMdClose className="text-2xl text-white" />
@@ -142,129 +143,112 @@ export default function HeaderMenu() {
         )}
       </button>
 
-      {/* Navigation Overlay */}
       <nav
         ref={overlayRef}
-        className="fixed inset-0 bg-[linear-gradient(135deg,#0a0a0a_0%,#111_50%,#0a0a0a_100%)] text-white flex flex-col justify-center items-center z-40 opacity-0 pointer-events-none"
+        className="fixed inset-0 bg-zinc-950 text-white flex flex-col justify-center items-center z-50 opacity-0 overflow-y-auto py-8"
       >
-        {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Grid pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PHBhdGggZD0iTTUwIDBMOTAgMjVWNzVMNTAgMTAwTDEwIDc1VjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')]"></div>
           </div>
 
-          {/* Glow effects */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-cyan-500/10 blur-[100px] animate-pulse-slow"></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-[100px] animate-pulse-slow"></div>
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[100px] animate-pulse-slower"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center space-y-12 max-w-4xl mx-auto px-6">
-          {/* Logo */}
-          <div ref={logoRef} className="opacity-0">
-            <Image
-              src="/assets/white-full-01.png"
-              width={160}
-              height={160}
-              alt="BLIH Technologies logo"
-              className="mx-auto hover:scale-105 transition-transform duration-500"
-              priority
-            />
+        <div className="relative z-10 text-center w-full max-w-4xl mx-auto px-6 flex flex-col items-center text-center">
+          <div ref={logoRef} className="opacity-0 mb-12">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <Image
+                src="/assets/white-full-01.png"
+                width={180}
+                height={60}
+                alt="Company Logo"
+                className="hover:scale-105 transition-transform duration-500"
+                priority
+              />
+            </Link>
           </div>
 
-          {/* Menu Items */}
           <ul
             ref={menuItemsRef}
-            className="flex flex-col gap-6 text-3xl font-medium tracking-tight"
+            className="flex flex-col items-center gap-6 text-2xl md:text-3xl font-medium tracking-tight w-full max-w-md"
           >
             {[
-              { name: "Home", href: "/" },
-              { name: "Services", href: "/services" },
-              { name: "Projects", href: "/projects" },
-              { name: "About", href: "/about" },
-              { name: "Contact", href: "/contact" },
+              { name: "Home", href: "#home" },
+              { name: "About Us", href: "#about" },
+              { name: "Services", href: "#services" },
+              { name: "Careers", href: "#testimonials" },
+              { name: "Contact", href: "https://forms.gle/GcQ6v1j6urY79F2D8" },
             ].map(({ name, href }) => (
-              <li key={name} className="overflow-hidden">
+              <li key={name} className="overflow-hidden cursor-pointer">
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="inline-block relative group hover:text-cyan-400 transition-colors duration-300"
+                  className="inline-flex items-center justify-between w-full py-3 px-6 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-300 group"
                 >
-                  {name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-500"></span>
+                  <span>{name}</span>
+                  <FiExternalLink className="text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* Social Links */}
           <div
             ref={socialsRef}
-            className="flex justify-center gap-6 text-2xl mt-12"
+            className="flex flex-wrap justify-center gap-4 text-xl mt-12"
           >
             {[
               {
                 icon: <FaTwitter />,
-                href: "https://twitter.com/blihtech",
+                href: "https://twitter.com",
                 label: "Twitter",
               },
               {
                 icon: <FaLinkedinIn />,
-                href: "https://linkedin.com/company/blihtech",
+                href: "https://linkedin.com",
                 label: "LinkedIn",
               },
               {
                 icon: <FaGithub />,
-                href: "https://github.com/blihtech",
+                href: "https://github.com",
                 label: "GitHub",
               },
               {
                 icon: <FaInstagram />,
-                href: "https://instagram.com/blihtech",
+                href: "https://instagram.com",
                 label: "Instagram",
               },
               {
                 icon: <FaDiscord />,
-                href: "https://discord.gg/blihtech",
+                href: "https://discord.com",
                 label: "Discord",
+              },
+              {
+                icon: <FaYoutube />,
+                href: "https://youtube.com",
+                label: "YouTube",
               },
             ].map(({ icon, href, label }) => (
               <Link
                 key={label}
                 href={href}
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
-                className="p-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_15px_rgba(0,200,255,0.2)] transition-all duration-300"
+                className="p-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-blue-400 hover:text-blue-400 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300"
               >
                 {icon}
               </Link>
             ))}
           </div>
+
+          <div className="mt-12 text-gray-400 text-sm md:text-base">
+            <p>blihtechnologies@gmail.com</p>
+            <p className="mt-2">+251936501702</p>
+          </div>
         </div>
       </nav>
-
-      {/* Animation styles */}
-      <style jsx>{`
-        @keyframes pulse-slow {
-          0%,
-          100% {
-            opacity: 0.1;
-          }
-          50% {
-            opacity: 0.3;
-          }
-        }
-        @keyframes pulse-slower {
-          0%,
-          100% {
-            opacity: 0.05;
-          }
-          50% {
-            opacity: 0.2;
-          }
-        }
-      `}</style>
     </>
   );
 }
