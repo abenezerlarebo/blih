@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import styles from "../styles/components/projects.module.css";
-import { projects } from "@/constants/constants";
 import {
   FiArrowRight,
   FiCalendar,
@@ -16,6 +15,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import Link from "next/link";
+import { projects } from "@/constants/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 

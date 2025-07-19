@@ -1,69 +1,102 @@
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-button,
-div {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+@import "tailwindcss";
+
+:root {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
 }
 
-/* Hide scrollbar for all browsers */
 body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important; /* Optional: just to make sure it's invisible */
-  border: none !important; /* Optional: remove any border */
-  box-shadow: none !important; /* Optional: remove any shadow */
-  opacity: 0 !important; /* Optional: make it fully transparent */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: transparent !important;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: transparent !important;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html,
-body {
+  font-family: var(--font-space-grotesk);
   scroll-behavior: smooth;
 }
 
-@supports not (backdrop-filter: blur(20px)) {
-  .modalOverlay {
-    background: rgba(0, 0, 0, 0.95);
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
-  .modalContainer {
-    background: rgba(25, 25, 35, 0.98);
+  50% {
+    transform: translateY(-20px) rotate(5deg);
   }
+}
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-3deg);
+  }
+}
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(2deg);
+  }
+}
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes pulse-slower {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes pulse-slowest {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff003c, #b600ff);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff4567, #c94fff);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff003c transparent;
 }

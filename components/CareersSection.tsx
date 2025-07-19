@@ -13,7 +13,7 @@ import {
 } from "react-icons/fi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { openPositions } from "@/constants/constants";
+import { openPositions } from "@/constants/openPositions";
 
 gsap.registerPlugin(ScrollTrigger);
 

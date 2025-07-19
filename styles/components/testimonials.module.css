@@ -60,7 +60,7 @@
 .card {
   flex: 0 0 420px;
   background: white;
-  border-radius: 24px;
+  /* border-radius: 24px; */
   padding: 3rem;
   position: relative;
   box-shadow: 0 15px 40px rgba(230, 57, 70, 0.1);

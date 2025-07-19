@@ -1,25 +1,17 @@
-/* Logo fixed top-left */
+/* Logo fixed top-left - Responsive */
 .logo {
   position: fixed;
   top: 24px;
   left: 24px;
-  width: 200px; /* Set width for your logo image */
-  height: auto; /* Set height */
+  width: 200px;
+  height: auto;
   user-select: none;
-  cursor: pointer; /* Usually logos link back to home */
+  cursor: pointer;
   z-index: 3600;
-  /* Optional: add smooth scaling on hover */
   transition: transform 0.3s ease;
 }
-/* To ensure the img fits inside */
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* or cover depending on your logo */
-  display: block;
-}
 
-/* Menu button fixed top-right */
+/* Menu button fixed top-right - Responsive */
 .menuButton {
   position: fixed;
   top: 24px;
@@ -36,11 +28,106 @@
   transition: transform 0.3s ease;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .logo {
+    width: 180px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .menuButton {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 160px;
+    top: 16px;
+    left: 16px;
+  }
+
+  .menuButton {
+    top: 16px;
+    right: 16px;
+  }
+
+  .menuList li a {
+    font-size: 3.5rem;
+  }
+
+  .socials {
+    font-size: 1.8rem;
+    gap: 2rem;
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 140px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .menuButton {
+    top: 12px;
+    right: 12px;
+  }
+
+  .menuList li a {
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .menuContent {
+    gap: 2.5rem;
+  }
+
+  .menuList {
+    gap: 2rem;
+  }
+
+  .socials {
+    font-size: 1.6rem;
+    gap: 1.8rem;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .hamburger {
+    width: 22px;
+    gap: 5px;
+  }
+
+  .hamburger span {
+    height: 2.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    width: 120px;
+  }
+
+  .menuList li a {
+    font-size: 2.5rem;
+  }
+
+  .socials {
+    font-size: 1.4rem;
+    gap: 1.5rem;
+  }
+}
+
+/* The rest of your existing CSS remains unchanged */
 .menuButton:hover {
   transform: scale(1.1);
 }
 
-/* Container for menu content */
 .menuContent {
   text-align: center;
   max-width: 480px;
@@ -52,7 +139,6 @@
   flex-grow: 1;
 }
 
-/* Menu navigation list */
 .menuList {
   list-style: none;
   padding: 0;
@@ -82,8 +168,8 @@
   transform: scale(1.1);
   outline: none;
 }
+
 .menuOverlay {
-  /* keep existing styles */
   position: fixed;
   top: 0;
   left: 0;
@@ -101,9 +187,9 @@
   z-index: 3500;
   flex-direction: column;
   padding-top: 100px;
-  padding-bottom: 80px; /* <-- Add bottom padding to avoid cutoff */
-  box-sizing: border-box; /* <-- Important for padding */
-  overflow: visible !important; /* <-- Allow overflow so socials can show */
+  padding-bottom: 80px;
+  box-sizing: border-box;
+  overflow: visible !important;
 }
 
 .socials {
@@ -116,7 +202,7 @@
   font-size: 2rem;
   color: #ff4b2b;
   user-select: none;
-  z-index: 4000; /* <-- Raise z-index above menuOverlay */
+  z-index: 4000;
 }
 
 .socials a {
@@ -134,19 +220,6 @@
   outline: none;
 }
 
-.menuButton {
-  background: transparent;
-  border: none;
-  z-index: 1000;
-  cursor: pointer;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 40px;
-  height: 40px;
-}
-
-/* Hamburger lines */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -164,7 +237,6 @@
   transition: all 0.3s ease;
 }
 
-/* Transform to X when open */
 .hamburger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -173,4 +245,11 @@
 }
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }

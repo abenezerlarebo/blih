@@ -1,7 +1,7 @@
 .scrollSection {
   position: relative;
   height: 100vh;
-  background: #c40030;
+  background: rgba(0, 0, 0, 0.857);
   color: white;
   overflow: hidden;
 }
@@ -25,12 +25,12 @@
   max-width: 1000px;
   min-height: 450px;
   transform: translate(-50%, -50%);
-  background: #c40030;
-  border-radius: 30px;
+  background: #3a3939;
+  /* border-radius: 30px; */
   padding: 1.5rem;
   color: white;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid #dd2251;
+  border: 3px solid #646464;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@
 }
 
 .serviceImg {
-  border-radius: 30px;
+  /* border-radius: 30px; */
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;

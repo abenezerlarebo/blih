@@ -1,15 +1,9 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
-import "@/styles/globals.css";
 import { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import Head from "next/head";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 export default function ClientLayout({
   children,
@@ -23,7 +17,7 @@ export default function ClientLayout({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <body className={inter.className}>
+      <body>
         {!loadingComplete ? (
           <LoadingScreen onFinish={() => setLoadingComplete(true)} />
         ) : (
