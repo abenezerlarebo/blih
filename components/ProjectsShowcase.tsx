@@ -15,7 +15,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import Link from "next/link";
-import { projects } from "@/constants/projects";
+import { projects } from "@/constants/projects-1";
 
 gsap.registerPlugin(ScrollTrigger);
 

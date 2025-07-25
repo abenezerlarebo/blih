@@ -118,6 +118,18 @@ body {
   }
 }
 
+@keyframes scanline {
+  0% {
+    top: -10px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

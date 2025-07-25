@@ -244,7 +244,7 @@ export default function HeaderMenu() {
           </div>
 
           <div className="mt-12 text-gray-400 text-sm md:text-base">
-            <p>info@blihtechnologies.com</p>
+            <p>blihtechnologies@gmail.com</p>
             <p className="mt-2">+251936501702</p>
           </div>
         </div>
