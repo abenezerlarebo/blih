@@ -3,10 +3,11 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { RiMailLine, RiMapPinLine } from "react-icons/ri";
 import { IoMdRocket } from "react-icons/io";
 import Image from "next/image";
+import { FaUpwork } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,16 +168,29 @@ export default function FooterSection() {
             </h4>
             <div className="flex gap-4 text-2xl">
               {[
-                { icon: <FaTwitter />, href: "#", label: "Twitter" },
-                { icon: <FaLinkedinIn />, href: "#", label: "LinkedIn" },
+                {
+                  icon: <FaTwitter />,
+                  href: "https://x.com/blih_tech",
+                  label: "Twitter",
+                },
+                {
+                  icon: <FaLinkedinIn />,
+                  href: "https://www.linkedin.com/company/108032023",
+                  label: "LinkedIn",
+                },
                 { icon: <FaGithub />, href: "#", label: "GitHub" },
-                { icon: <FaDribbble />, href: "#", label: "Dribbble" },
+                {
+                  icon: <FaUpwork />,
+                  href: "https://www.upwork.com/agencies/1903750003405169476/",
+                  label: "Upwork",
+                },
               ].map((social, i) => (
                 <a
                   key={i}
                   href={social.href}
                   className="p-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-blue-400 hover:text-blue-400 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300"
                   aria-label={social.label}
+                  target="_blank"
                 >
                   {social.icon}
                 </a>
@@ -198,7 +212,7 @@ export default function FooterSection() {
               </a>
               <div className="flex items-center gap-3 text-gray-400">
                 <RiMapPinLine className="text-xl" />
-                <span>ICT Park, Addis Ababa, ET</span>
+                <span>IT Park, Addis Ababa, ET</span>
               </div>
             </div>
           </div>

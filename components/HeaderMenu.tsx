@@ -7,7 +7,6 @@ import {
   FaLinkedinIn,
   FaGithub,
   FaInstagram,
-  FaDiscord,
   FaYoutube,
 } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
@@ -15,6 +14,7 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
+import { FaUpwork } from "react-icons/fa6";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -145,7 +145,7 @@ export default function HeaderMenu() {
 
       <nav
         ref={overlayRef}
-        className="fixed inset-0 bg-zinc-950 text-white flex flex-col justify-center items-center z-50 opacity-0 overflow-y-auto py-8"
+        className="fixed inset-0 bg-zinc-950 text-white flex flex-col justify-center items-center z-40 opacity-0 pointer-events-none"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 opacity-10">
@@ -178,7 +178,7 @@ export default function HeaderMenu() {
               { name: "Home", href: "#home" },
               { name: "About Us", href: "#about" },
               { name: "Services", href: "#services" },
-              { name: "Careers", href: "#testimonials" },
+              { name: "Testimonials", href: "#testimonials" },
               { name: "Contact", href: "https://forms.gle/GcQ6v1j6urY79F2D8" },
             ].map(({ name, href }) => (
               <li key={name} className="overflow-hidden cursor-pointer">
@@ -201,12 +201,12 @@ export default function HeaderMenu() {
             {[
               {
                 icon: <FaTwitter />,
-                href: "https://twitter.com",
+                href: "https://x.com/blih_tech",
                 label: "Twitter",
               },
               {
                 icon: <FaLinkedinIn />,
-                href: "https://linkedin.com",
+                href: "https://www.linkedin.com/company/108032023",
                 label: "LinkedIn",
               },
               {
@@ -220,9 +220,9 @@ export default function HeaderMenu() {
                 label: "Instagram",
               },
               {
-                icon: <FaDiscord />,
-                href: "https://discord.com",
-                label: "Discord",
+                icon: <FaUpwork />,
+                href: "https://www.upwork.com/agencies/1903750003405169476/",
+                label: "Upwork",
               },
               {
                 icon: <FaYoutube />,
@@ -244,7 +244,7 @@ export default function HeaderMenu() {
           </div>
 
           <div className="mt-12 text-gray-400 text-sm md:text-base">
-            <p>blihtechnologies@gmail.com</p>
+            <p>info@blihtechnologies.com</p>
             <p className="mt-2">+251936501702</p>
           </div>
         </div>

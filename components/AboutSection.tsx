@@ -376,8 +376,8 @@ function AboutSection() {
                 icon: <MdCloud className="text-purple-400" />,
               },
               {
-                city: "Sydney",
-                country: "Australia",
+                city: "Halifax",
+                country: "Canada",
                 services: "UI/UX Design",
                 color: "border-indigo-400",
                 icon: <MdDesignServices className="text-indigo-400" />,
