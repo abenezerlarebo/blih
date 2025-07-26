@@ -7,6 +7,7 @@ import { IoIosGlobe, IoIosPhonePortrait } from "react-icons/io";
 import { MdSecurity, MdCloud } from "react-icons/md";
 import Head from "next/head";
 import Link from "next/link";
+import posthog from "posthog-js";
 
 const headlineTexts = [
   "BUILDING NEXT-GEN DIGITAL EXPERIENCES",
@@ -51,7 +52,7 @@ export default function HeroSection() {
           name="description"
           content="Explore our custom software, web development, and mobile solutions tailored for businesses in Ethiopia"
         />
-        <link rel="canonical" href="https://blihtech.com" />
+        <link rel="canonical" href="https://blihtechnologies.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -59,16 +60,16 @@ export default function HeroSection() {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Blih Technologies",
-              url: "https://blihtech.com",
-              logo: "https://blihtech.com/logo.png",
+              url: "https://blihtechnologies.com",
+              logo: "https://blihtechnologies.com/logo.png",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Addis Ababa",
                 addressCountry: "ET",
               },
               sameAs: [
-                "https://twitter.com/blihtech",
-                "https://linkedin.com/company/blihtech",
+                "https://x.com/blih_tech",
+                "https://www.linkedin.com/company/108032023",
               ],
             }),
           }}
@@ -79,18 +80,16 @@ export default function HeroSection() {
         ref={heroRef}
         className="relative min-h-screen w-full flex flex-col justify-center items-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-900 to-black text-white overflow-hidden px-4 sm:px-6"
       >
-        {/* Grid overlay */}
         <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNMCAwaDQwdjQwSDB6Ii8+PC9nPjwvc3ZnPg==')]"></div>
         </div>
 
-        {/* Floating tech elements */}
         {floatingShapes.map((_, i) => {
           const colors = [
-            "rgba(0, 200, 255, 0.6)", // Blue
-            "rgba(100, 255, 200, 0.5)", // Teal
-            "rgba(255, 100, 200, 0.4)", // Pink
-            "rgba(255, 200, 100, 0.4)", // Yellow
+            "rgba(0, 200, 255, 0.6)",
+            "rgba(100, 255, 200, 0.5)",
+            "rgba(255, 100, 200, 0.4)",
+            "rgba(255, 200, 100, 0.4)",
           ];
           const icons = [
             <FaCode key="code" className="text-xs" />,
@@ -129,16 +128,13 @@ export default function HeroSection() {
           );
         })}
 
-        {/* Gradient background */}
         <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(0,200,255,0.3)_0%,_transparent_60%)] animate-pulse-slow" />
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,_rgba(100,255,200,0.2)_0%,_transparent_60%)] animate-pulse-slower" />
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[radial-gradient(circle_at_center,_rgba(255,100,200,0.2)_0%,_transparent_60%)] animate-pulse-slowest" />
         </div>
 
-        {/* Main content */}
         <div className="relative z-10 text-center max-w-6xl w-full space-y-8 md:space-y-12 px-4">
-          {/* Premium badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-900/30 to-teal-900/30 border border-white/10 backdrop-blur-md">
             <FaServer className="text-blue-400 text-sm" />
             <span className="text-xs font-medium tracking-wider text-blue-100">
@@ -146,7 +142,6 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* Headline */}
           <div className="relative h-[80px] sm:h-[100px] md:h-[150px] flex items-center justify-center">
             <h1
               ref={textRef}
@@ -157,7 +152,6 @@ export default function HeroSection() {
             </h1>
           </div>
 
-          {/* Description */}
           <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed tracking-wide font-light">
             At <span className="font-medium text-white">BLIH Technologies</span>
             , we craft high-performance web and mobile applications with
@@ -165,7 +159,6 @@ export default function HeroSection() {
             robust backend systems that scale with your business.
           </p>
 
-          {/* Stats bar - Responsive layout */}
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-6 md:mt-8">
             <div className="flex items-center gap-2 sm:gap-3 px-4 py-2">
               <div className="text-blue-400 text-xl sm:text-2xl">
@@ -217,10 +210,11 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Buttons - Responsive layout */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-8 md:mt-12">
             <Link
+              onClick={() => posthog.capture("Start Project Clicked")}
               href={"https://forms.gle/GcQ6v1j6urY79F2D8"}
+              target="_blank"
               className="group relative overflow-hidden flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 text-white font-medium tracking-wide transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,180,255,0.5)] hover:scale-[1.02]"
             >
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjYiPgo8cmVjdCB3aWR0aD0iNiIgaGVpZ2h0PSI2IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMNiA2WiIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iIzAwMDAwMCI+PC9wYXRoPgo8cGF0aCBkPSJNNiAwTDAgNloiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2U9IiMwMDAwMDAiPjwvcGF0aD4KPC9zdmc+')] opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
@@ -230,7 +224,9 @@ export default function HeroSection() {
             </Link>
 
             <Link
+              onClick={() => posthog.capture("Consult Team Clicked")}
               href={"https://forms.gle/GcQ6v1j6urY79F2D8"}
+              target="_blank"
               className="group relative overflow-hidden flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 text-gray-200 font-medium tracking-wide transition-all duration-300 hover:shadow-[0_0_20px_rgba(100,255,200,0.2)] hover:scale-[1.02]"
             >
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjYiPgo8cmVjdCB3aWR0aD0iNiIgaGVpZ2h0PSI2IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMNiA2WiIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZT0iIzAwMDAwMCI+PC9wYXRoPgo8cGF0aCBkPSJNNiAwTDAgNloiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2U9IiMwMDAwMDAiPjwvcGF0aD4KPC9zdmc+')] opacity-5 group-hover:opacity-10 transition-opacity duration-500"></div>
@@ -241,7 +237,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Scrolling tech stack - Responsive */}
         <div className="absolute bottom-6 sm:bottom-10 left-0 w-full overflow-hidden z-10">
           <div className="flex items-center whitespace-nowrap animate-scroll-text text-xs sm:text-sm">
             {Array(4)
@@ -274,7 +269,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Animation styles */}
         <style jsx>{`
           @keyframes float1 {
             0%,

@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import { IoMdRocket, IoMdMedical, IoMdCart, IoMdBoat } from "react-icons/io";
 import { FaUmbrellaBeach } from "react-icons/fa";
+import posthog from "posthog-js";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -138,7 +140,7 @@ const ProjectsSection = () => {
     <section
       ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 lg:px-8 bg-neutral-950 overflow-hidden"
-      id="projects"
+      id="portfolio"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute inset-0 opacity-10">
@@ -191,6 +193,11 @@ const ProjectsSection = () => {
               ref={(el) => {
                 projectCardsRef.current[index] = el!;
               }}
+              onClick={() =>
+                posthog.capture("Project clicked", {
+                  projectTitle: project.title,
+                })
+              }
               className="group relative bg-gradient-to-b from-gray-800/30 to-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10 backdrop-blur-sm"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -266,7 +273,12 @@ const ProjectsSection = () => {
                     <p className="text-sm text-gray-300 mb-3">
                       {project.tagline}
                     </p>
-                    <a
+                    <Link
+                      onClick={() =>
+                        posthog.capture("Vising project site clicked", {
+                          projectTitle: project.title,
+                        })
+                      }
                       href={project.url || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -279,7 +291,7 @@ const ProjectsSection = () => {
                       ) : (
                         "View Case Study"
                       )}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -296,8 +308,10 @@ const ProjectsSection = () => {
           <p className="text-gray-400 mb-6">
             Have a project in mind? Let&apos;s bring it to life.
           </p>
-          <a
-            href="#contact"
+          <Link
+            href="https://forms.gle/GcQ6v1j6urY79F2D8"
+            target="_blank"
+            onClick={() => posthog.capture("Start project clicked")}
             className="inline-flex items-center px-6 py-3.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all group hover:scale-[1.02] transform-gpu"
           >
             <span className="relative z-10">Start Your Project</span>
@@ -316,7 +330,7 @@ const ProjectsSection = () => {
               ></path>
             </svg>
             <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

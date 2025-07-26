@@ -7,6 +7,7 @@ import { FaStar } from "react-icons/fa";
 import { IoMdRocket } from "react-icons/io";
 import { testimonials } from "@/constants/testimonials";
 import { BiSolidArrowToLeft, BiSolidArrowToRight } from "react-icons/bi";
+import posthog from "posthog-js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,14 +100,12 @@ export default function TestimonialsSection() {
       ref={sectionRef}
       className="py-16 md:py-24 px-4 bg-stone-950 text-white relative overflow-hidden"
     >
-      {/* Holographic Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PHBhdGggZD0iTTUwIDBMOTAgMjVWNzVMNTAgMTAwTDEwIDc1VjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')]"></div>
         </div>
 
-        {/* Animated particles */}
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
@@ -130,13 +129,11 @@ export default function TestimonialsSection() {
           />
         ))}
 
-        {/* Glow effects */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-[100px] animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[100px] animate-pulse-slower"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Header */}
         <div ref={headingRef} className="text-center mb-12 md:mb-16 px-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-white/10 backdrop-blur-md mb-6">
             <IoMdRocket className="text-blue-400 text-lg" />
@@ -152,9 +149,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Carousel Container */}
         <div className="relative">
-          {/* Holographic Carousel */}
           <div className="relative h-[500px] md:h-[550px] overflow-hidden">
             <div
               ref={carouselRef}
@@ -166,6 +161,11 @@ export default function TestimonialsSection() {
                   ref={(el) => {
                     cardsRef.current[index] = el;
                   }}
+                  onClick={() =>
+                    posthog.capture("Testimonial clicked", {
+                      testimonial: t.name,
+                    })
+                  }
                   className={`w-[280px] md:w-[400px] flex-shrink-0 bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-lg p-6 md:p-8 rounded-xl md:rounded-2xl mx-2 md:mx-5 cursor-pointer border border-gray-800/50 shadow-lg transition-all duration-500 hover:border-blue-400/50`}
                 >
                   <div className="flex justify-between items-start mb-6">
@@ -186,7 +186,6 @@ export default function TestimonialsSection() {
                     &quot;{t.text}&quot;
                   </p>
 
-                  {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {t.tech.map((tech, i) => (
                       <span

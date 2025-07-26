@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://blihtech.com
+Host: https://blihtechnologies.com
 
 # Sitemaps
-Sitemap: https://blihtech.com/sitemap.xml
+Sitemap: https://blihtechnologies.com/sitemap.xml

@@ -15,6 +15,7 @@ import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUpwork } from "react-icons/fa6";
+import posthog from "posthog-js";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,21 +25,20 @@ export default function HeaderMenu() {
   const logoRef = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [menuOpen]);
 
-  // Animation setup
   useEffect(() => {
     if (!overlayRef.current) return;
 
     if (menuOpen) {
       tl.current?.kill();
-      gsap.set(overlayRef.current, { autoAlpha: 0, y: "-100%" });
+      gsap.set(overlayRef.current, {
+        autoAlpha: 0,
+        y: "-100%",
+        pointerEvents: "auto",
+      });
       gsap.set(menuItemsRef.current?.children || [], { y: 40, opacity: 0 });
       gsap.set(socialsRef.current, { y: 40, opacity: 0 });
       gsap.set(logoRef.current, { scale: 0.8, opacity: 0 });
@@ -86,7 +86,11 @@ export default function HeaderMenu() {
       tl.current?.kill();
       tl.current = gsap.timeline({
         onComplete: () => {
-          gsap.set(overlayRef.current, { autoAlpha: 0, pointerEvents: "none" });
+          gsap.set(overlayRef.current, {
+            autoAlpha: 0,
+            pointerEvents: "none",
+            y: "-100%",
+          });
         },
       });
       tl.current
@@ -133,8 +137,11 @@ export default function HeaderMenu() {
     <>
       <button
         aria-label={menuOpen ? "Close menu" : "Open menu"}
-        onClick={() => setMenuOpen((prev) => !prev)}
-        className="z-51 fixed top-6 right-6 p-3 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+        onClick={() => {
+          setMenuOpen((prev) => !prev);
+          posthog.capture("Menu button clicked", { menuOpen: !menuOpen });
+        }}
+        className="z-[9999] fixed top-6 right-6 p-3 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
       >
         {menuOpen ? (
           <IoMdClose className="text-2xl text-white" />
@@ -145,7 +152,7 @@ export default function HeaderMenu() {
 
       <nav
         ref={overlayRef}
-        className="fixed inset-0 bg-zinc-950 text-white flex flex-col justify-center items-center z-40 opacity-0 pointer-events-none"
+        className="fixed inset-0 bg-zinc-950 text-white flex flex-col justify-center items-center z-[9998] opacity-0"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 opacity-10">
@@ -178,14 +185,20 @@ export default function HeaderMenu() {
               { name: "Home", href: "#home" },
               { name: "About Us", href: "#about" },
               { name: "Services", href: "#services" },
+              { name: "Portfolio", href: "#portfolio" },
               { name: "Testimonials", href: "#testimonials" },
-              { name: "Contact", href: "https://forms.gle/GcQ6v1j6urY79F2D8" },
             ].map(({ name, href }) => (
-              <li key={name} className="overflow-hidden cursor-pointer">
+              <li
+                key={name}
+                className="overflow-hidden cursor-pointer"
+                onClick={() =>
+                  posthog.capture("Menu item clicked", { item: name })
+                }
+              >
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="inline-flex items-center justify-between w-full py-3 px-6 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-300 group"
+                  className="inline-flex items-center justify-between w-full py-3 px-6 rounded-lg hover:text-blue-400 transition-all duration-300 group gap-3"
                 >
                   <span>{name}</span>
                   <FiExternalLink className="text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

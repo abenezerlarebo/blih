@@ -3,7 +3,13 @@
 import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaCode, FaMobileAlt, FaServer, FaChartLine } from "react-icons/fa";
+import {
+  FaCode,
+  FaMobileAlt,
+  FaServer,
+  FaChartLine,
+  FaRobot,
+} from "react-icons/fa";
 import { IoMdRocket } from "react-icons/io";
 import Image from "next/image";
 
@@ -11,51 +17,93 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    title: "Custom Web Development",
-    desc: "We build high-performance, scalable web applications using modern frameworks like React, Next.js, and Vue.js tailored to your business needs.",
+    title: "Enterprise Web Solutions",
+    desc: "We architect high-performance digital platforms that drive customer engagement and business growth, combining cutting-edge design with conversion-focused development.",
     icon: FaCode,
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166",
     features: [
-      "Responsive & accessible design",
+      "Conversion-optimized UI/UX design",
       "SEO-optimized architecture",
-      "Progressive Web Apps",
-      "API integration",
+      "E-commerce & CMS integration",
+      "Web performance auditing",
+      "Ongoing maintenance & support",
+    ],
+    highlights: [
+      "Increase online visibility",
+      "Improve customer acquisition",
+      "Modernize digital presence",
     ],
   },
   {
-    title: "Mobile App Development",
-    desc: "Native and cross-platform mobile applications for iOS and Android that deliver seamless user experiences.",
+    title: "Cross-Platform Mobile Experiences",
+    desc: "Native-quality mobile applications that bridge platforms while maintaining brand consistency and user experience excellence.",
     icon: FaMobileAlt,
     image: "https://images.unsplash.com/photo-1609921141835-710b7fa6e438",
     features: [
-      "React Native development",
-      "Flutter applications",
+      "iOS & Android development",
+      "React Native & Flutter expertise",
       "App store optimization",
-      "Offline functionality",
+      "Push notification systems",
+      "Offline-first capabilities",
+    ],
+    highlights: [
+      "Extend brand to mobile",
+      "Improve customer retention",
+      "Drive engagement",
     ],
   },
   {
-    title: "Backend & API Services",
-    desc: "Robust server-side solutions with scalable architecture and secure data management.",
+    title: "Scalable System Architecture",
+    desc: "Future-proof backend systems and APIs designed for growth, security, and seamless integration across your digital ecosystem.",
     icon: FaServer,
     image: "https://images.unsplash.com/photo-1594915440248-1e419eba6611",
     features: [
-      "Node.js & Python backends",
-      "GraphQL & REST APIs",
-      "Database architecture",
-      "Cloud deployment",
+      "Microservices architecture",
+      "Cloud-native development",
+      "CI/CD pipeline setup",
+      "Database optimization",
+      "API gateway configuration",
+    ],
+    highlights: [
+      "Ensure system reliability",
+      "Prepare for scaling",
+      "Reduce technical debt",
     ],
   },
   {
-    title: "Data-Driven Solutions",
-    desc: "Turn your data into actionable insights with powerful analytics dashboards and reporting tools.",
+    title: "Digital Growth Solutions",
+    desc: "Comprehensive digital strategy services combining technical implementation with data-driven marketing insights.",
     icon: FaChartLine,
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
     features: [
-      "Business intelligence",
-      "Custom dashboards",
-      "Data visualization",
-      "Machine learning integration",
+      "SEO strategy & implementation",
+      "Conversion rate optimization",
+      "Analytics integration",
+      "Technical marketing audits",
+      "Performance benchmarking",
+    ],
+    highlights: [
+      "Increase organic traffic",
+      "Improve conversion rates",
+      "Data-driven decision making",
+    ],
+  },
+  {
+    title: "Business Automation Systems",
+    desc: "Custom workflow solutions that eliminate operational bottlenecks and enhance productivity through smart automation.",
+    icon: FaRobot,
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+    features: [
+      "Process automation design",
+      "CRM/ERP integrations",
+      "Custom dashboard development",
+      "Workflow optimization",
+      "Legacy system modernization",
+    ],
+    highlights: [
+      "Reduce operational costs",
+      "Improve efficiency",
+      "Enhance data visibility",
     ],
   },
 ];
@@ -69,7 +117,6 @@ export default function ServicesSection() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate title with clip reveal
       gsap.fromTo(
         titleRef.current,
         {
@@ -90,7 +137,6 @@ export default function ServicesSection() {
         }
       );
 
-      // Subtitle float-up animation
       gsap.from(subtitleRef.current, {
         y: 40,
         opacity: 0,
@@ -104,7 +150,6 @@ export default function ServicesSection() {
         },
       });
 
-      // Floating particle animations
       particleRefs.current.forEach((particle) => {
         if (!particle) return;
 
@@ -192,14 +237,11 @@ export default function ServicesSection() {
       ref={sectionRef}
       className="relative bg-stone-950 text-white min-h-screen overflow-hidden py-20 px-6 md:px-16 flex items-center justify-center"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Grid pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PHBhdGggZD0iTTUwIDBMOTAgMjVWNzVMNTAgMTAwTDEwIDc1VjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')]"></div>
         </div>
 
-        {/* Glow effects */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-[100px]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[100px]"></div>
       </div>
@@ -288,7 +330,6 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Tech Indicators */}
         <div className="flex justify-center gap-3 mt-16 flex-wrap">
           {[
             "REACT",

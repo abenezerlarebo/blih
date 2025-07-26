@@ -8,6 +8,9 @@ import { RiMailLine, RiMapPinLine } from "react-icons/ri";
 import { IoMdRocket } from "react-icons/io";
 import Image from "next/image";
 import { FaUpwork } from "react-icons/fa6";
+import posthog from "posthog-js";
+import Link from "next/link";
+import { BiHeart } from "react-icons/bi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,22 +65,17 @@ export default function FooterSection() {
       ref={sectionRef}
       className="relative w-full bg-stone-950 text-white px-6 py-20 overflow-hidden border-t border-gray-800/50"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Grid pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PHBhdGggZD0iTTUwIDBMOTAgMjVWNzVMNTAgMTAwTDEwIDc1VjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')]"></div>
         </div>
 
-        {/* Glow effects */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-[100px]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-500/10 blur-[100px]"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
-        {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          {/* Logo + Tagline */}
           <div ref={logoRef} className="space-y-6">
             <div className="flex items-center gap-4">
               <Image
@@ -97,7 +95,6 @@ export default function FooterSection() {
             </p>
           </div>
 
-          {/* Navigation Columns */}
           <div
             ref={linksRef}
             className="grid grid-cols-2 md:grid-cols-3 lg:col-span-3 gap-8"
@@ -106,9 +103,9 @@ export default function FooterSection() {
               {
                 title: "Company",
                 links: [
-                  { href: "#home", label: "Home" },
                   { href: "#about", label: "About" },
                   { href: "#services", label: "Services" },
+                  { href: "#portfolio", label: "Portfolio" },
                   { href: "#testimonials", label: "Testimonials" },
                 ],
               },
@@ -140,7 +137,14 @@ export default function FooterSection() {
                 </h4>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
-                    <li key={link.label}>
+                    <li
+                      key={link.label}
+                      onClick={() =>
+                        posthog.capture("Footer navigation clicked", {
+                          clickedLink: link.label,
+                        })
+                      }
+                    >
                       <a
                         href={link.href}
                         className="text-gray-400 hover:text-blue-400 transition duration-300 group"
@@ -185,7 +189,12 @@ export default function FooterSection() {
                   label: "Upwork",
                 },
               ].map((social, i) => (
-                <a
+                <Link
+                  onClick={() =>
+                    posthog.capture("Social link clicked in the footer", {
+                      socialLink: social.label,
+                    })
+                  }
                   key={i}
                   href={social.href}
                   className="p-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-blue-400 hover:text-blue-400 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300"
@@ -193,7 +202,7 @@ export default function FooterSection() {
                   target="_blank"
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -218,7 +227,6 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Marquee */}
         <div className="w-full overflow-hidden border-t border-gray-800/50 pt-8">
           <div
             className="whitespace-nowrap text-center text-xl font-mono tracking-widest"
@@ -239,15 +247,16 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="text-center text-sm text-gray-500 pt-10 border-t border-gray-800/50">
           <p className="mb-2">
             &copy; {new Date().getFullYear()} Digital Agency. All rights
             reserved.
           </p>
-          <p className="text-xs text-gray-600">
-            Crafted with React, Next.js and Tailwind CSS
-          </p>
+          <div className="text-xs text-gray-600 flex items-center justify-center gap-1">
+            <p>Crafted with</p> <BiHeart color="red" size={23} />
+            <p>by</p>
+            <span className="font-bold">Blih Technologies</span>
+          </div>
         </div>
       </div>
     </footer>
