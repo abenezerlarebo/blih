@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://blihtechnologies.com
-
-# Sitemaps
-Sitemap: https://blihtechnologies.com/sitemap.xml

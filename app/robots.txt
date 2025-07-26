@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blih-technologies.vercel.app/
+
+# Sitemaps
+Sitemap: https://blih-technologies.vercel.app/sitemap.xml

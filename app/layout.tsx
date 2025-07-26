@@ -1,6 +1,7 @@
 import ClientLayout from "@/components/ClientLayout";
 import { Space_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
+import { Metadata } from "next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -9,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blih Technologies | Code. Design. Impact.",
   description:
     "Blih Technologies is a bold software development agency based in Ethiopia, crafting innovative websites, web apps, and digital experiences.",
@@ -23,7 +24,9 @@ export const metadata = {
     "Website Design Ethiopia",
     "Mobile App Development Ethiopia",
   ],
-  authors: [{ name: "Blih Technologies", url: "https://blihtech.com" }],
+  authors: [
+    { name: "Blih Technologies", url: "https://blih-technologies.vercel.app" },
+  ],
   creator: "Blih Technologies",
   publisher: "Blih Technologies",
 
@@ -31,13 +34,13 @@ export const metadata = {
     title: "Blih Technologies | Code. Design. Impact.",
     description:
       "Innovative software solutions and bold web experiences crafted in Ethiopia.",
-    url: "https://blihtech.com",
+    url: "https://blih-technologies.vercel.app/",
     siteName: "Blih Technologies",
     locale: "en_ET",
     type: "website",
     images: [
       {
-        url: "https://blihtech.com/og-image.jpg",
+        url: "https://blih-technologies.vercel.app/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Blih Technologies Logo and Website Preview",
@@ -50,9 +53,9 @@ export const metadata = {
     title: "Blih Technologies | Code. Design. Impact.",
     description:
       "Innovative software agency based in Ethiopia, delivering custom web and mobile apps.",
-    site: "@blihtech",
-    creator: "@blihtech",
-    images: ["https://blihtech.com/og-image.jpg"],
+    site: "@blih_tech",
+    creator: "@blih_tech",
+    images: ["https://blih-technologies.vercel.app/opengraph-image.png"],
   },
 
   robots: {
@@ -63,13 +66,15 @@ export const metadata = {
       index: true,
       follow: true,
       noimageindex: false,
-      maxVideoPreview: -1,
-      maxImagePreview: "large",
-      maxSnippet: -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-
-  metadataBase: new URL("https://blihtech.com"),
+  verification: {
+    google: "CD8o5e2tN1I--zxj6lqHoKCqnQIu0nWfRxGxg0xgHWk",
+  },
+  metadataBase: new URL("https://blih-technologies.vercel.app/"),
 };
 
 export default function RootLayout({
